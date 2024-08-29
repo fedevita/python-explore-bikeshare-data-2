@@ -72,7 +72,7 @@ def load_data(city, month, day):
 
     df.rename(columns={
         'Unnamed: 0': 'Trip Id',
-    },inplace=True)
+    }, inplace=True)
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['End Time'] = pd.to_datetime(df['End Time'])
@@ -98,13 +98,13 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
-    print('the most common month\n',df[['Month Name']].mode().values)
+    print('the most common month\n', df[['Month Name']].mode().values)
 
     # display the most common day of week
-    print('the most common day of week\n',df[['Day Name']].mode().values)
+    print('the most common day of week\n', df[['Day Name']].mode().values)
 
     # display the most common start hour
-    print('the most common start hour\n',df[['Start Hour']].mode().values)
+    print('the most common start hour\n', df[['Start Hour']].mode().values)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
@@ -125,7 +125,8 @@ def station_stats(df):
     print('most commonly used end station\n', df[['End Station']].mode().values)
 
     # display most frequent combination of start station and end station trip
-    print('most frequent combination of start station and end station trip\n', df[['Station Combination']].mode().values)
+    print('most frequent combination of start station and end station trip\n',
+          df[['Station Combination']].mode().values)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
@@ -150,7 +151,7 @@ def trip_duration_stats(df):
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
-    df1 = df[['Trip Id','User Type','User Type']].copy()
+    df1 = df[['Trip Id', 'User Type', 'User Type']].copy()
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
@@ -181,19 +182,9 @@ def display_data(df):
         if display.lower() not in ['yes', 'no']:
             display = input('Invalid Input, Try Again!\n').lower()
             continue
-        print(df.iloc[start_loc:start_loc+5])
+        print(df.iloc[start_loc:start_loc + 5])
         start_loc += 5
         display = input('Would you like to display other first 5 rows of the dataset? Enter yes or no.\n').lower()
-
-
-    # while True:
-    #     if display.lower() not in ['yes', 'no']:
-    #         display = input('\nWould you like to display the first 5 rows of the dataset? Enter yes or no.\n')
-    #         continue
-    # if display.lower() == 'no':
-    #
-    # print(df.iloc[start_loc:start_loc+5])
-
 
 
 def main():
