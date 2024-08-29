@@ -166,6 +166,36 @@ def user_stats(df):
     print('-' * 40)
 
 
+def display_data(df):
+    """
+    Interactively display the data in increments of 5 rows based on user input.
+
+    Args:
+        df - Pandas DataFrame containing city data filtered by month and day
+    """
+    start_loc = 0
+    display = input('Would you like to display the first 5 rows of the dataset? Enter yes or no.\n').lower()
+    while True:
+        if display == 'no':
+            return
+        if display.lower() not in ['yes', 'no']:
+            display = input('Invalid Input, Try Again!\n').lower()
+            continue
+        print(df.iloc[start_loc:start_loc+5])
+        start_loc += 5
+        display = input('Would you like to display other first 5 rows of the dataset? Enter yes or no.\n').lower()
+
+
+    # while True:
+    #     if display.lower() not in ['yes', 'no']:
+    #         display = input('\nWould you like to display the first 5 rows of the dataset? Enter yes or no.\n')
+    #         continue
+    # if display.lower() == 'no':
+    #
+    # print(df.iloc[start_loc:start_loc+5])
+
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -176,6 +206,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
 
+        display_data(df)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
